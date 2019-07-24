@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Bungee+Outline&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* #f1c40f */
+/* #f39c12 */
+/* #e74c3c */
+/* #3498db */
+/* #2ecc71 */
+body {
+  background: #f1f1f1;
+}
+
+.container {
+  background: #ffffff;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.c1 {
+  margin-top: 50px;
+  padding: 40px;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+input,
+.select-opt {
+  border: 2px solid #f1c40f;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.action-btn {
+  background: #2ecc71;
+  color: #fff;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h1 {
+  font-family: "Bungee Outline", cursive;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #d35400;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 2px solid #f1c40f;
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f3db;
+}
+
+.select-opt {
+  width: 100%;
+}
+
+.add-player-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.add-player-container input {
+  width: 80%;
+  padding: 10px;
+}
+
+.add-player-container button {
+  background: #f1c40f;
+  color: #ffffff;
+  width: 18%;
+  padding: 10px;
+}
+
+.current-match {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+  font-size: 20px;
+}
+
+.current-match button {
+  background: #2ecc71;
+  color: #ffffff;
+  padding: 20px;
+  width: 40%;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600px;
+}
