@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Bungee+Outline&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap");
 
 * {
   padding: 0;
@@ -14,7 +14,13 @@
 /* #3498db */
 /* #2ecc71 */
 body {
-  background: #f1f1f1;
+  background: url("bg3.jpg") #f1f1f1;
+  /* background-image: linear-gradient(to left top, #f1c40f, #bdce34, #89d25c, #55d284, #00cea8); */
+  /* background-image: linear-gradient(to left top, #f1c40f, #f2ba0b, #f3b00b, #f3a60e, #f39c12); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100%;
 }
 
 .container {
@@ -40,7 +46,7 @@ input,
 }
 
 .action-btn {
-  background: #2ecc71;
+  background: #8e44ad;
   color: #fff;
   width: 100%;
   margin-top: 20px;
@@ -48,14 +54,22 @@ input,
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 600;
+  transition: 0.3s all ease-in-out;
+  animation: slide-action 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both,
+    slide-action2 0.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 h1 {
-  font-family: "Bungee Outline", cursive;
+  /* font-family: "Bungee Outline", cursive; */
+  font-family: "Bungee Inline", cursive;
   text-align: center;
   font-size: 40px;
-  font-weight: 800;
-  color: #d35400;
+  font-weight: 500;
+  color: #e74c3c;
+  transition: 0.5s all ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation: slide-name 1.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 table {
@@ -69,10 +83,15 @@ th {
   border: 2px solid #f1c40f;
   text-align: left;
   padding: 10px;
+  text-transform: uppercase;
 }
 
 tr:nth-child(even) {
   background-color: #f8f3db;
+}
+
+td i {
+  margin-right: 10px;
 }
 
 .select-opt {
@@ -96,6 +115,7 @@ tr:nth-child(even) {
   color: #ffffff;
   width: 18%;
   padding: 10px;
+  font-weight: 600;
 }
 
 .current-match {
@@ -107,12 +127,78 @@ tr:nth-child(even) {
   font-size: 20px;
 }
 
-.current-match button {
+.player {
   background: #2ecc71;
   color: #ffffff;
   padding: 20px;
-  width: 40%;
+  width: 45%;
   text-transform: uppercase;
-  font-size: 20px;
-  font-weight: 600px;
+  font-size: 30px;
+  font-weight: 700px;
+  transition: 0.5s all;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 100px;
+}
+
+.p2 {
+  background: #2ecc71;
+}
+
+.player:hover {
+  background: #d35400;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.player i {
+  margin-right: 10px;
+}
+
+@keyframes slide-action {
+  0% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-action2 {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-name {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-40px);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

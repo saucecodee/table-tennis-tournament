@@ -1,0 +1,22 @@
+{
+  "name": "table-tennis-tournament",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saucecodee/table-tennis-tournament.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saucecodee/table-tennis-tournament/issues"
+  },
+  "homepage": "https://github.com/saucecodee/table-tennis-tournament#readme",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0"
+  }
+}
