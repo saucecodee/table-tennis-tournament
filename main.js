@@ -5,8 +5,9 @@ window.onload = () => {
 
 function addPlayer() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
-     let name = document.getElementById("player-name").value;
-     if (name) {
+     let name = document.getElementById("player-name").value.trim();
+     console.log(name)
+     if (/[\w]/.test(name)) {
           players.push({
                name: name,
                played: 0,
