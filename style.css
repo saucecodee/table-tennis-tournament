@@ -14,7 +14,7 @@
 /* #3498db */
 /* #2ecc71 */
 body {
-  background: url("bg3.jpg") #f1f1f1;
+  background: url("bg1.jpg") #f1f1f1;
   /* background-image: linear-gradient(to left top, #f1c40f, #bdce34, #89d25c, #55d284, #00cea8); */
   /* background-image: linear-gradient(to left top, #f1c40f, #f2ba0b, #f3b00b, #f3a60e, #f39c12); */
   background-repeat: no-repeat;
@@ -54,9 +54,17 @@ input,
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 600;
-  transition: 0.3s all ease-in-out;
+  transition: 0.5s all ease-in-out;
   animation: slide-action 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both,
-    slide-action2 0.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    slide-action2 0.5s infinite 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.action-btn i {
+  margin-left: 20px;
+}
+
+.action-btn:nth-child(even) {
+  animation-delay: 0.3s;
 }
 
 h1 {
@@ -67,8 +75,6 @@ h1 {
   font-weight: 500;
   color: #e74c3c;
   transition: 0.5s all ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 2s;
   animation: slide-name 1.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
@@ -92,6 +98,12 @@ tr:nth-child(even) {
 
 td i {
   margin-right: 10px;
+}
+
+.delete{
+     color: #e74c3c;
+     float: right;
+     font-size: 20px;
 }
 
 .select-opt {

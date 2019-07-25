@@ -6,14 +6,25 @@ window.onload = () => {
 function addPlayer() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
      let name = document.getElementById("player-name").value;
-     players.push({
-          name: name,
-          played: 0,
-          points: 0
-     })
-     localStorage.setItem("players", JSON.stringify(players));
+     if (name) {
+          players.push({
+               name: name,
+               played: 0,
+               points: 0
+          })
+          localStorage.setItem("players", JSON.stringify(players));
+     }else{
+          window.alert('Enter a valid name')
+     }
      document.getElementById("player-name").value = '';
 
+     displayPlayers()
+}
+
+function deletePlayer(i) {
+     let players = JSON.parse(localStorage.getItem("players"))
+     players.splice(i, 1)
+     localStorage.setItem("players", JSON.stringify(players));
      displayPlayers()
 }
 
@@ -23,7 +34,11 @@ function displayPlayers() {
      for (var i = 0; i < players.length; i++) {
           var tr = "<tr>";
           tr += `<td>${i + 1}</td>`;
-          tr += `<td><i class="far fa-user"></i>${players[i].name}</td>`;
+          tr += `<td>
+               <i class="far fa-user"></i> 
+               ${players[i].name} 
+               <i class="fas fa-times delete" onclick="deletePlayer(${i})"></i>
+          </td>`;
           tr += "</tr>";
           t += tr;
      }
@@ -41,7 +56,6 @@ function startGame() {
 
           //store currentRound in Local storage
           let currentRound = []
-          console.log(players.length);
           players.forEach((a, i) => {
                currentRound.push(i)
           })
@@ -55,7 +69,7 @@ function startGame() {
 
           //redirect to play.html
           window.location.href = "play.html";
-
+          resetScores()
           getMatch()
      } else {
           window.alert('Ther should be up to 3 players to begin a tournamnet')
@@ -112,7 +126,11 @@ function scorePlayer(w) {
      //check if any player has reached limit
      players.forEach(p => {
           if (p.points == limit) {
-               window.location.href = "result.html";
+               if (players.length < 3) {
+                    window.location.href = "winner.html";
+               } else {
+                    window.location.href = "result.html";
+               }
           }
      })
 
@@ -144,16 +162,37 @@ function resetScores() {
      getRanking()
 }
 
-function looserNum() {
+function clearAll() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
-     var t = "";
-     for (var i = 0; i < players.length; i++) {
-          var tr = "<tr>";
-          tr += `<td>${i + 1}</td>`;
-          tr += `<td>${players[i].name}</td>`;
-          tr += "</tr>";
-          t += tr;
+     players = []
+     localStorage.setItem("players", JSON.stringify(players));
+     displayPlayers();
+}
+
+function eliminatePlayers() {
+     let players = JSON.parse(localStorage.getItem("players"));
+     let lNum = document.getElementById("loosers").value
+     for (var i = 0; i < lNum; i++) {
+          players.pop()
      }
-     document.getElementById("players-list").innerHTML = t;
+     localStorage.setItem("players", JSON.stringify(players));
+
+     resetScores()
+
+     let currentRound = []
+     players.forEach((a, i) => {
+          currentRound.push(i)
+     })
+
+     // store match
+     localStorage.setItem("match", JSON.stringify([0, 1]));
+     currentRound.splice(0, 1)
+     localStorage.setItem("currentRound", JSON.stringify(currentRound));
+     localStorage.setItem("nextRound", JSON.stringify([]));
+
+     //redirect to play.html
+     window.location.href = "play.html";
+
+     getMatch()
 }
 
