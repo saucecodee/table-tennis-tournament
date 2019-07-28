@@ -11,34 +11,36 @@
 </head>
 
 <body>
+
+     <!-------------------- container -------------------->
      <div class="container c1">
+          <!-------------------- Header -------------------->
           <h1>PINg tournament ! <i class="fas fa-table-tennis"></i></h1>
 
+          <!-------------------- Display Winner -------------------->
           <div class="displayWinner">
                <h2>Winner !!!</h2>
                <i class="far fa-user"></i>
                <span id="winnerName">Winner name</span>
           </div>
-          <a href="index.html"> <button class="action-btn" onclick="eliminatePlayers()">
+
+          <!-------------------- go to home page -------------------->
+          <a href="index.html">
+               <button class="action-btn" onclick="eliminatePlayers()">
                     Continue
                     <i class="fas fa-table-tennis"></i>
-               </button></a>
+               </button>
+          </a>
      </div>
 
-     <audio src=""></audio>
-
+     <!-------------------- include main.js -------------------->
      <script src="main.js"></script>
-     <script>
-          window.onload = () => {
-               playWinner()
-          }
-          function playWinner() {
-               var audio = new Audio("audio/winner.mp3")
-               audio.play();
-          }
 
+     <script>
           let players = JSON.parse(localStorage.getItem("players"))
           let match = JSON.parse(localStorage.getItem("match"))
+
+          // get winner name
           document.getElementById("winnerName").innerHTML = players[match[0]].name;
      </script>
 </body>

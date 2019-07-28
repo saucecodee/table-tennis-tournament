@@ -3,6 +3,11 @@ window.onload = () => {
      getMatch();
 }
 
+displayPlayers();
+
+//============================================================//
+//        Add player                                          //
+//============================================================//
 function addPlayer() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
      let name = document.getElementById("player-name").value;
@@ -21,6 +26,9 @@ function addPlayer() {
      displayPlayers()
 }
 
+//============================================================//
+//        Delete player                                       //
+//============================================================//
 function deletePlayer(i) {
      let players = JSON.parse(localStorage.getItem("players"))
      players.splice(i, 1)
@@ -28,6 +36,9 @@ function deletePlayer(i) {
      displayPlayers()
 }
 
+//============================================================//
+//        Display playe                                       //
+//============================================================//
 function displayPlayers() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
      var t = "";
@@ -45,8 +56,9 @@ function displayPlayers() {
      document.getElementById("players-list").innerHTML = t;
 }
 
-displayPlayers();
-
+//============================================================//
+//        Start game                                          //
+//============================================================//
 function startGame() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
      if (players.length > 1) {
@@ -78,6 +90,9 @@ function startGame() {
 
 }
 
+//============================================================//
+//        Get player rankings                                 //
+//============================================================//
 function getRanking() {
      let players = JSON.parse(localStorage.getItem("players"));
      let playersV = players.sort((a, b) => (a.points < b.points) ? 1 : -1)
@@ -94,6 +109,9 @@ function getRanking() {
      document.getElementById("rank-table").innerHTML = t;
 }
 
+//============================================================//
+//        Get next match of players                           //
+//============================================================//
 function getMatch() {
      let players = JSON.parse(localStorage.getItem("players"));
      let currentRound = JSON.parse(localStorage.getItem("currentRound"));
@@ -112,6 +130,9 @@ function getMatch() {
      getRanking()
 }
 
+//============================================================//
+//        Score player - winner                               //
+//============================================================//
 function scorePlayer(w) {
      playPoint()
      let players = JSON.parse(localStorage.getItem("players"));
@@ -156,6 +177,9 @@ function scorePlayer(w) {
      getMatch();
 }
 
+//============================================================//
+//        Reset all player scores                             //
+//============================================================//
 function resetScores() {
      playEnd()
      let players = JSON.parse(localStorage.getItem("players"));
@@ -168,6 +192,9 @@ function resetScores() {
      getRanking()
 }
 
+//============================================================//
+//        Dealete all players                                 //
+//============================================================//
 function clearAll() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
      players = []
@@ -175,6 +202,10 @@ function clearAll() {
      displayPlayers();
 }
 
+
+//============================================================//
+//        Eliminate low score players                         //
+//============================================================//
 function eliminatePlayers() {
      let players = JSON.parse(localStorage.getItem("players"));
      let lNum = document.getElementById("loosers").value
@@ -204,16 +235,25 @@ function eliminatePlayers() {
      getMatch()
 }
 
+//============================================================//
+//        Play winner sound clip                              //
+//============================================================//
 function playWinner() {
      var audio = new Audio("audio/winner.mp3")
      audio.play();
 }
 
+//============================================================//
+//        Player sound clip on each points gotten             //
+//============================================================//
 function playPoint() {
      var audio = new Audio("audio/point.mp3")
      audio.play();
 }
 
+//============================================================//
+//        Play sound clip at the end of each round            //
+//============================================================//
 function playEnd() {
      var audio = new Audio("audio/end.mp3")
      audio.play();

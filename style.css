@@ -9,15 +9,8 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* #f1c40f */
-/* #f39c12 */
-/* #e74c3c */
-/* #3498db */
-/* #2ecc71 */
 body {
   background: url("bg1.jpg") #f1f1f1;
-  /* background-image: linear-gradient(to left top, #f1c40f, #bdce34, #89d25c, #55d284, #00cea8); */
-  /* background-image: linear-gradient(to left top, #f1c40f, #f2ba0b, #f3b00b, #f3a60e, #f39c12); */
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -47,8 +40,8 @@ input,
   padding: 10px;
 }
 
-.select-opt{
-     margin-top: 20px;
+.select-opt {
+  margin-top: 20px;
 }
 
 .action-btn {

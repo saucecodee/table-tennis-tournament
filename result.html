@@ -11,9 +11,13 @@
 </head>
 
 <body>
+
+     <!-------------------- container -------------------->
      <div class="container c1">
+          <!-------------------- Header -------------------->
           <h1>PINg tournament ! <i class="fas fa-table-tennis"></i></h1>
 
+          <!-------------------- players ranking table -------------------->
           <table>
                <tr>
                     <th width="30">#</th>
@@ -22,30 +26,36 @@
                     <th width="30">Pts</th>
                </tr>
 
-               <tbody id="rank-table"></tbody>
+               <tbody id="rank-table">
+                    <!---------- player row goes in here ---------->
+               </tbody>
           </table>
 
-          <select id="loosers" class="select-opt" style="margin-top: 20px"></select>
+          <!-------------------- Select players to eliminate -------------------->
+          <select id="loosers" class="select-opt" style="margin-top: 20px">
+               <!---------- options goes in here ---------->
+          </select>
 
+          <!-------------------- continue game -------------------->
           <button class="action-btn" onclick="eliminatePlayers()">
                Continue
                <i class="fas fa-table-tennis"></i>
           </button>
      </div>
 
+     <!-------------------- include main.js -------------------->
      <script src="main.js"></script>
+
      <script>
-       
-          function playWinner() {
-               var audio = new Audio("audio/winner.mp3")
-               audio.play();
-          }
           let players = JSON.parse(localStorage.getItem("players") || "[]")
           var opt = "";
+          // count players to eliminate
           for (var i = 1; i < players.length - 1; i++) {
                let optEach = `<option value="${i}">Elimintate <strong>${i}</strong> players </option>`;
                opt += optEach
           }
+
+          // popualte the select tag with number of eliminable players
           document.getElementById("loosers").innerHTML = opt;
      </script>
 </body>

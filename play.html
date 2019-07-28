@@ -11,21 +11,31 @@
 </head>
 
 <body>
+
+     <!-------------------- container -------------------->
      <div class="container c1">
+          <!-------------------- Header -------------------->
           <h1>PINg tournament ! <i class="fas fa-table-tennis"></i></h1>
 
+          <!-------------------- Current players -------------------->
           <div class="current-match">
+
+               <!---------- player 1 ---------->
                <button class="player" onclick="scorePlayer(0)">
                     <span id="p1">Player 1</span>
                     <span class="score" id="score1">1</span>
                </button>
+
                vs
+
+               <!---------- player 2 ---------->
                <button class="player player2" onclick="scorePlayer(1)">
                     <span id="p2">No player </span>
                     <span class="score" id="score2">2</span>
                </button>
           </div>
 
+          <!-------------------- players ranking table -------------------->
           <table>
                <tr>
                     <th width="30">#</th>
@@ -34,15 +44,19 @@
                     <th width="30">Pts</th>
                </tr>
 
-               <tbody id="rank-table"></tbody>
+               <tbody id="rank-table">
+                    <!---------- player row goes in here ---------->
+               </tbody>
           </table>
 
+          <!-------------------- Reset players scores -------------------->
           <button onclick="resetScores()" class="action-btn">
                Reset scores
                <i class="fas fa-redo"></i>
           </button>
      </div>
 
+     <!-------------------- include main.js -------------------->
      <script src="main.js"></script>
 </body>
 
