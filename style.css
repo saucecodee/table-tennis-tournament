@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
 
 * {
   padding: 0;
@@ -25,7 +26,7 @@ body {
 
 .container {
   background: #ffffff;
-  width: 800px;
+  width: 700px;
   margin: 0 auto;
 }
 
@@ -46,8 +47,13 @@ input,
   padding: 10px;
 }
 
+.select-opt{
+     margin-top: 20px;
+}
+
 .action-btn {
   background: #8e44ad;
+  background-image: linear-gradient(to left bottom, #9b59b6, #9854b4, #954fb2, #9149af, #8e44ad);
   color: #fff;
   width: 100%;
   margin-top: 20px;
@@ -58,6 +64,11 @@ input,
   transition: 0.5s all ease-in-out;
   animation: slide-action 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both,
     slide-action2 0.5s infinite 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.ab2 {
+  background: #e74c3c;
 }
 
 .action-btn i {
@@ -69,14 +80,13 @@ input,
 }
 
 h1 {
-  /* font-family: "Bungee Outline", cursive; */
   font-family: "Bungee Inline", cursive;
   text-align: center;
   font-size: 40px;
   font-weight: 500;
-  color: #e74c3c;
+  color: #2c2c2c;
   transition: 0.5s all ease-in-out;
-  animation: slide-name 1.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-name 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 table {
@@ -101,10 +111,11 @@ td i {
   margin-right: 10px;
 }
 
-.delete{
-     color: #e74c3c;
-     float: right;
-     font-size: 20px;
+.delete {
+  color: #e74c3c;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .select-opt {
@@ -119,16 +130,21 @@ td i {
 }
 
 .add-player-container input {
-  width: 80%;
+  width: 70%;
   padding: 10px;
 }
 
 .add-player-container button {
   background: #f1c40f;
+  background-image: linear-gradient(to left bottom, #f1c40f, #f2ba0b, #f3b00b, #f3a60e, #f39c12);
   color: #ffffff;
-  width: 18%;
+  width: 28%;
   padding: 10px;
   font-weight: 600;
+}
+
+.add-player-container button i {
+  margin-left: 10px;
 }
 
 .current-match {
@@ -137,15 +153,20 @@ td i {
   justify-content: space-between;
   align-items: center;
   height: 150px;
-  font-size: 20px;
+  font-size: 25px;
+  font-family: "Luckiest Guy", cursive;
 }
 
 .player {
+  position: relative;
   background: #2ecc71;
+  background-image: linear-gradient(to left bottom, #2ecc71, #2cc46d, #2abd68, #29b564, #27ae60);
   color: #ffffff;
-  padding: 20px;
+  padding: 15px;
+  padding-right: 90px;
   width: 45%;
   text-transform: uppercase;
+  text-align: end;
   font-size: 30px;
   font-weight: 700px;
   transition: 0.3s all;
@@ -153,11 +174,13 @@ td i {
   border-radius: 100px;
 }
 
-.p2 {
-  background: #2ecc71;
+.player2 {
+  background: #3498db;
+  text-align: start;
+  padding-left: 90px;
 }
 
-.player:hover {
+.playerClick {
   background: #f1c40f;
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -165,6 +188,47 @@ td i {
 
 .player i {
   margin-right: 10px;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: #ffffff;
+  color: #000000;
+  height: 80px;
+  width: 80px;
+  top: -2px;
+  right: -2px;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 50px;
+  border-radius: 100px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  animation: score 1s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.player2 .score {
+  left: -2px;
+}
+
+.displayWinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.displayWinner i {
+  color: #f1c40f;
+  margin-top: 20px;
+  font-size: 100px;
+}
+
+#winnerName {
+  margin-top: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
 @keyframes slide-action {
@@ -185,6 +249,21 @@ td i {
   }
   50% {
     transform: scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes score {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
     opacity: 1;
   }
   100% {

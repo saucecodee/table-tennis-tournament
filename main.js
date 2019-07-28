@@ -5,16 +5,15 @@ window.onload = () => {
 
 function addPlayer() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
-     let name = document.getElementById("player-name").value.trim();
-     console.log(name)
-     if (/[\w]/.test(name)) {
+     let name = document.getElementById("player-name").value;
+     if (/^[\w]+$/.test(name)) {
           players.push({
                name: name,
                played: 0,
                points: 0
           })
           localStorage.setItem("players", JSON.stringify(players));
-     }else{
+     } else {
           window.alert('Enter a valid name')
      }
      document.getElementById("player-name").value = '';
@@ -50,7 +49,7 @@ displayPlayers();
 
 function startGame() {
      let players = JSON.parse(localStorage.getItem("players") || "[]")
-     if (players.length > 2) {
+     if (players.length > 1) {
           // store limit in Local storage
           limit = document.getElementById("gameLimit").value
           localStorage.setItem("limit", limit);
@@ -72,6 +71,7 @@ function startGame() {
           window.location.href = "play.html";
           resetScores()
           getMatch()
+          playEnd()
      } else {
           window.alert('Ther should be up to 3 players to begin a tournamnet')
      }
@@ -80,8 +80,9 @@ function startGame() {
 
 function getRanking() {
      let players = JSON.parse(localStorage.getItem("players"));
+     let playersV = players.sort((a, b) => (a.points < b.points) ? 1 : -1)
      var t = "";
-     for (var i = 0; i < players.length; i++) {
+     for (var i = 0; i < playersV.length; i++) {
           var tr = "<tr>";
           tr += `<td>${i + 1}</td>`;
           tr += `<td><i class="far fa-user"></i>${players[i].name}</td>`;
@@ -101,7 +102,9 @@ function getMatch() {
      localStorage.setItem("match", JSON.stringify(match));
 
      document.getElementById("p1").innerHTML = players[match[0]].name;
+     document.getElementById("score1").innerHTML = players[match[0]].points;
      document.getElementById("p2").innerHTML = players[match[1]].name;
+     document.getElementById("score2").innerHTML = players[match[1]].points;
 
      currentRound.splice(0, 1)
      localStorage.setItem("currentRound", JSON.stringify(currentRound));
@@ -110,6 +113,7 @@ function getMatch() {
 }
 
 function scorePlayer(w) {
+     playPoint()
      let players = JSON.parse(localStorage.getItem("players"));
      let currentRound = JSON.parse(localStorage.getItem("currentRound"));
      let nextRound = JSON.parse(localStorage.getItem("nextRound"));
@@ -153,6 +157,7 @@ function scorePlayer(w) {
 }
 
 function resetScores() {
+     playEnd()
      let players = JSON.parse(localStorage.getItem("players"));
      players.forEach(p => {
           p.points = 0;
@@ -173,10 +178,12 @@ function clearAll() {
 function eliminatePlayers() {
      let players = JSON.parse(localStorage.getItem("players"));
      let lNum = document.getElementById("loosers").value
+
+     let playersV = players.sort((a, b) => (a.points < b.points) ? 1 : -1)
      for (var i = 0; i < lNum; i++) {
-          players.pop()
+          playersV.pop()
      }
-     localStorage.setItem("players", JSON.stringify(players));
+     localStorage.setItem("players", JSON.stringify(playersV));
 
      resetScores()
 
@@ -196,4 +203,20 @@ function eliminatePlayers() {
 
      getMatch()
 }
+
+function playWinner() {
+     var audio = new Audio("audio/winner.mp3")
+     audio.play();
+}
+
+function playPoint() {
+     var audio = new Audio("audio/point.mp3")
+     audio.play();
+}
+
+function playEnd() {
+     var audio = new Audio("audio/end.mp3")
+     audio.play();
+}
+
 
